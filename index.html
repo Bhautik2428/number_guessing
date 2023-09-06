@@ -3,11 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Document</title>
+    <title>Number Guessing Game</title>
+   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="container-1">
+    <div class="container-2">
+        <h1>Number Guessing Game</h1><br>
+        <h2>let's Start Now</h2>
+        <input type="number" placeholder="Enter Your No" id="guess"><br>
+        <button onclick="play()" id="btn">GUESS</button>
+        <p id="no_click"> No. Of GUESS </p>
+        <p id="no_guessed"> Guessed Numbers are</p>
+        <p id="rang"></p>
+    </div>
+</div>
+<!-- <script src="/script.js"></script> -->
+<script>
+
+
+    var noclik = document.getElementById("no_click");
+    var noofguess = document.getElementById("no_guessed");
+    var trgur = document.getElementById("rang");
+    var answer = Math.floor(Math.random()*100)+1;
+    var no_of_guesses = 0;
+    var guessed_nums = [];
     
-    <script src="/script.js"></script>
+    function play(){
+        var userguesss = document.getElementById("guess").value;
+        if(userguesss < 1 || userguesss > 100){
+            alert("Please enter a number between 1 and 100.");
+            document.getElementById("guess").value = "";
+          }
+          else{
+            guessed_nums.push(userguesss);
+            no_of_guesses+= 1;
+    
+            if(userguesss  < answer){
+                noclik.textContent = "Your guess Number is too low";
+                noofguess.textContent  = "No of GUESS:- " + no_of_guesses;
+                trgur.textContent = "Guesses Numbers are:- " + guessed_nums ;
+            }
+            else if(userguesss > answer){
+                noclik.textContent = "Your guess Number is too high";
+                noofguess.textContent  = "No of GUESS:- " + no_of_guesses;
+                trgur.textContent = "Guesses Numbers are:- " + guessed_nums ;
+            }
+            else if(userguesss == answer){
+                noclik.textContent = "Congrats! You have guessed the correct number";
+                noofguess.textContent = "The number was:- " + answer;
+                trgur.textContent = "You guessed it in "+ no_of_guesses + " guesses.";
+                document.getElementById("btn").disabled = true;
+            }
+            document.getElementById("guess").value = "";
+        }
+    }
+
+    
+    console.log(answer = Math.floor(Math.random()*100)+1)
+   // console.log((userguesss < 1 || userguesss > 100))
+   // console.log(no_of_guesses+= 1)
+
+   console.log(no_of_guesses+= 1)
+
+
+
+</script>
 </body>
 </html>
